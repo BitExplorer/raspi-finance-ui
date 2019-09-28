@@ -14,7 +14,7 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 
-import Pagination from "react-js-pagination"
+//import Pagination from "react-js-pagination"
 
 const actionsStyles = theme => ({
   root: {
@@ -45,7 +45,7 @@ class TablePaginationActions extends React.Component {
   };
 
   render() {
-    const { classes, count, page, rowsPerPage, theme } = this.props;
+    const { count, page, rowsPerPage, theme } = this.props;
 
     return (
       <div className={this.props.classes.root}>

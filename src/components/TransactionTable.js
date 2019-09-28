@@ -13,7 +13,7 @@ import Button from '@material-ui/core/Button'
 import DialogDeleteConfirm from './DialogDeleteConfirm'
 import DialogFormUpdate from './DialogFormUpdate'
 import delete_logo from '../images/delete-24px.svg'
-import edit_logo from '../images/edit-24px.svg'
+//import edit_logo from '../images/edit-24px.svg'
 import { setAccount, setTransaction, setTransactionLoadStatus } from '../store/account/actionCreator'
 //import MUIDataTable from 'mui-datatables'
 import DialogFormTransactionAdd from './DialogFormTransactionAdd'
@@ -87,7 +87,7 @@ export class TransactionTable extends Component {
 
   handler = (e) => {
     //e.preventDefault()
-    if( this.props.accountNameOwner !== '' && this.props.accountNameOwner !== null && this.props.accountNameOwner.length != 0 ) {
+    if( this.props.accountNameOwner !== '' && this.props.accountNameOwner !== null && this.props.accountNameOwner.length !== 0 ) {
       this.props.setAccount(false, this.props.accountNameOwner)
     }
   }
@@ -402,7 +402,7 @@ const styles = (theme) => ({
 
 const mapStateToProps = state => {
   const { account } = state
-  const { isShown, accountNameOwners, transactions, viewStatus, updatedTransaction } = account
+  const { isShown, transactions, viewStatus } = account
 
   return {
     notificationIsShown: isShown,

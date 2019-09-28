@@ -6,12 +6,12 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Select from 'react-select';
+//import Select from 'react-select';
 import add_logo from '../images/add.svg';
-import uuid from 'uuidv4';
+//import uuid from 'uuidv4';
 import axios from 'axios';
 
-const dateFormat = require('dateformat');
+//const dateFormat = require('dateformat');
 
 export default class DialogFormAccountAdd extends Component {
   state = {

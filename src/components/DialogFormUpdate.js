@@ -13,7 +13,7 @@ import Select from 'react-select'
 import edit_logo from '../images/edit-24px.svg'
 import axios from 'axios'
 
-const dateFormat = require('dateformat');
+//const dateFormat = require('dateformat');
 
 class DialogFormUpdate extends Component {
   state = {
@@ -125,7 +125,7 @@ class DialogFormUpdate extends Component {
   handleDate = (dt) => {
     var timestamp = Date.parse(dt);
 
-    if (isNaN(timestamp) == false) {
+    if (isNaN(timestamp) === false) {
       var d = new Date(timestamp);
     }
     return d
@@ -133,7 +133,7 @@ class DialogFormUpdate extends Component {
 
   componentDidMount () {
     let clearedList = []
-    let accountNameOwnerList = []
+    //let accountNameOwnerList = []
     let clearedJoinedList = []
     let accountNameOwnerJoinedList = []
     clearedList.push(1)
@@ -149,11 +149,11 @@ class DialogFormUpdate extends Component {
     })
 
     this.setState({ accountNameOwnerOptions: accountNameOwnerJoinedList, clearedOptions: clearedJoinedList })
-    let accountNameOwner = document.getElementById('accountNameOwner')
+    //let accountNameOwner = document.getElementById('accountNameOwner')
   }
 
   render() {
-    const { accountNameOwnerList, transaction } = this.props
+    const {  transaction } = this.props
 
     return (
       <div>

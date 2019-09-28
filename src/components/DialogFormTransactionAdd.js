@@ -106,7 +106,7 @@ export default class DialogFormTransactionAdd extends Component {
 
   componentDidMount = () => {
     let clearedList = []
-    let accountNameOwnerList = []
+    //let accountNameOwnerList = []
     let clearedJoinedList = []
     let accountNameOwnerJoinedList = []
     clearedList.push(1)
