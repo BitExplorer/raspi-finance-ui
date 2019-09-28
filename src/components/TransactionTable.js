@@ -96,6 +96,15 @@ export class TransactionTable extends Component {
     //alert(this.state.currentPage)
   };
 
+  handleDate = dt => {
+    var timestamp = Date.parse(dt);
+
+    if (isNaN(timestamp) === false) {
+      var d = new Date(timestamp);
+    }
+    return d;
+  };
+
   handleClickUpdate = guid => {
     this.setState({clickOpenUpdate: true, guidToUpdate: guid});
   };
@@ -344,7 +353,11 @@ export class TransactionTable extends Component {
                         />
                       </div>
                     </TableCell>
-                    <TableCell>{row.transactionDate + '|'}</TableCell>
+                    <TableCell>
+                      {this.handleDate(row.transactionDate).toLocaleDateString(
+                        'en-US',
+                      )}
+                    </TableCell>
                     <TableCell>{row.description}</TableCell>
                     <TableCell>{row.category}</TableCell>
                     <TableCell className={this.props.classes.currency}>
