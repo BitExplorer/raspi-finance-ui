@@ -19,7 +19,7 @@ class SimpleSelect extends Component {
 
   componentDidMount () {
 
-    let endpoint = 'http://localhost:8080/select_accounts'
+    let endpoint = 'http://localhost:8080/account/select/all'
     let payload = ''
 
     axios.get(endpoint, payload, {

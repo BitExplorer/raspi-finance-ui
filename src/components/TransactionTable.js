@@ -144,7 +144,7 @@ export class TransactionTable extends Component {
       this.props.setAccount(true, this.props.accountNameOwner);
 
       let endpoint =
-        'http://localhost:8080/get_by_account_name_owner/' +
+        'http://localhost:8080/account/select/all' +
         this.props.accountNameOwner;
       let payload = '';
 
@@ -165,7 +165,7 @@ export class TransactionTable extends Component {
         });
 
       endpoint =
-        'http://localhost:8080/get_totals_cleared/' +
+        'http://localhost:8080/transaction/account/totals/' +
         this.props.accountNameOwner;
       payload = '';
 
@@ -193,7 +193,7 @@ export class TransactionTable extends Component {
     this.props.setAccount(true, []);
     this.props.setTransaction('none', []);
 
-    let endpoint = 'http://localhost:8080/select_accounts';
+    let endpoint = 'http://localhost:8080/account/select/all';
     let payload = '';
 
     axios

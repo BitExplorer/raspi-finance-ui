@@ -98,7 +98,7 @@ class DialogFormUpdate extends Component {
     }
     let payload = JSON.stringify(obj);
     let endpoint =
-      'http://localhost:8080/update/' + this.props.transaction.guid;
+      'http://localhost:8080/transaction/update/' + this.props.transaction.guid;
     console.log(payload);
     alert(payload);
 

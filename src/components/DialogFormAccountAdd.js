@@ -41,7 +41,7 @@ export default class DialogFormAccountAdd extends Component {
     obj['activeStatus'] = activeStatus.value;
 
     let payload = JSON.stringify(obj);
-    let endpoint = 'http://localhost:8080/insert_account';
+    let endpoint = 'http://localhost:8080/account/select/all';
     console.log(payload);
     alert(payload);
 

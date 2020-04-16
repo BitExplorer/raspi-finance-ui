@@ -114,7 +114,7 @@ export default class DialogFormTransactionAdd extends Component {
     clearedList.push(1);
     clearedList.push(0);
 
-    let endpoint = 'http://localhost:8080/select_accounts';
+    let endpoint = 'http://localhost:8080/account/select/all';
     let payload = '';
 
     axios
