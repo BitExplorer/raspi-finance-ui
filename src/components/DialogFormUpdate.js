@@ -133,13 +133,18 @@ class DialogFormUpdate extends Component {
     }
   };
 
-  handleDate = dt => {
-    var timestamp = Date.parse(dt);
-
-    if (isNaN(timestamp) === false) {
-      var d = new Date(timestamp);
+  handleEpochDate = epoch => {
+    if (isNaN(epoch) === true) {
+      return 'invalid epoch'
     }
-    return d;
+
+    if( epoch.toString().length === 10 ) {
+      var epochWithMillis = epoch * 1000;
+      var epochMillisToDate = new Date(epochWithMillis);
+      return epochMillisToDate.toLocaleDateString('en-US');
+    }
+
+    return new Date(epoch).toLocaleDateString('en-US');
   };
 
   componentDidMount() {
@@ -210,7 +215,7 @@ class DialogFormUpdate extends Component {
                 id="transactionDate"
                 type="text"
                 key="transactionDate"
-                defaultValue={'test' /*this.handleDate( transaction.transactionDate, ).toLocaleDateString('en-US') */}
+                defaultValue={this.handleEpochDate(transaction.transactionDate )/*this.handleDate( transaction.transactionDate, ).toLocaleDateString('en-US') */}
                 margin="dense"
                 fullWidth
               />

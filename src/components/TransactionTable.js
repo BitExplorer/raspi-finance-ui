@@ -89,13 +89,18 @@ export class TransactionTable extends Component {
     //alert(this.state.currentPage)
   };
 
-  handleDate = dt => {
-    var timestamp = Date.parse(dt);
-
-    if (isNaN(timestamp) === false) {
-      var d = new Date(timestamp);
+  handleEpochDate = epoch => {
+    if (isNaN(epoch) === true) {
+      return 'invalid epoch'
     }
-    return d;
+
+    if( epoch.toString().length === 10 ) {
+      var epochWithMillis = epoch * 1000;
+      var epochMillisToDate = new Date(epochWithMillis);
+      return epochMillisToDate.toLocaleDateString('en-US');
+    }
+
+    return new Date(epoch).toLocaleDateString('en-US');
   };
 
   handleClickUpdate = guid => {
@@ -349,7 +354,7 @@ export class TransactionTable extends Component {
                       </div>
                     </TableCell>
                     <TableCell>
-                      {'date' /* this.handleDate(row.transactionDate).toLocaleDateString('en-US') */}
+                      {this.handleEpochDate(row.transactionDate)}
                     </TableCell>
                     <TableCell>{row.description}</TableCell>
                     <TableCell>{row.category}</TableCell>
