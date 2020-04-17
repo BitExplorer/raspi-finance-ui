@@ -1,7 +1,8 @@
 #!/bin/sh
 
+echo npm install watchman
 echo npm build
-npm install
+echo npm install
 npm start
 #yarn add downshift
 

@@ -8,18 +8,11 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-//import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button';
 import DialogDeleteConfirm from './DialogDeleteConfirm';
 import DialogFormUpdate from './DialogFormUpdate';
 import delete_logo from '../images/delete-24px.svg';
-//import edit_logo from '../images/edit-24px.svg'
-import {
-  setAccount,
-  setTransaction,
-  setTransactionLoadStatus,
-} from '../store/account/actionCreator';
-//import MUIDataTable from 'mui-datatables'
+import { setAccount, setTransaction, setTransactionLoadStatus, } from '../store/account/actionCreator';
 import DialogFormTransactionAdd from './DialogFormTransactionAdd';
 import DialogFormAccountAdd from './DialogFormAccountAdd';
 import Pagination from 'react-paginating';
@@ -68,10 +61,10 @@ export class TransactionTable extends Component {
       currentPage: page,
     });
 
-    //let endpoint = 'http://localhost:8080/get_page_by_account_name_owner/' + this.props.accountNameOwner
-    let endpoint =
-      'http://localhost:8080/findall?pageSize=5&pageNumber=' +
-      (this.state.currentPage - 1);
+    let endpoint = 'http://localhost:8080/transaction/account/select/' + this.props.accountNameOwner;
+    // let endpoint =
+    //   'http://localhost:8080/findall?pageSize=5&pageNumber=' +
+    //   (this.state.currentPage - 1);
     let payload = '';
 
     axios
@@ -144,8 +137,9 @@ export class TransactionTable extends Component {
       this.props.setAccount(true, this.props.accountNameOwner);
 
       let endpoint =
-        'http://localhost:8080/account/select/all' +
+        'http://localhost:8080/transaction/account/select/' +
         this.props.accountNameOwner;
+        alert("endpoint=" + endpoint);
       let payload = '';
 
       axios
@@ -195,6 +189,7 @@ export class TransactionTable extends Component {
 
     let endpoint = 'http://localhost:8080/account/select/all';
     let payload = '';
+    console.log("endpoint = " + endpoint);
 
     axios
       .get(endpoint, payload, {
@@ -354,9 +349,7 @@ export class TransactionTable extends Component {
                       </div>
                     </TableCell>
                     <TableCell>
-                      {this.handleDate(row.transactionDate).toLocaleDateString(
-                        'en-US',
-                      )}
+                      {'date' /* this.handleDate(row.transactionDate).toLocaleDateString('en-US') */}
                     </TableCell>
                     <TableCell>{row.description}</TableCell>
                     <TableCell>{row.category}</TableCell>

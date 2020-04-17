@@ -22,6 +22,8 @@ class SimpleSelect extends Component {
     let endpoint = 'http://localhost:8080/account/select/all'
     let payload = ''
 
+    console.log("select");
+
     axios.get(endpoint, payload, {
     headers: {
         'Content-Type': 'application/json',

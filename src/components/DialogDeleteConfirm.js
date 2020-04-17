@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-//import List from '@material-ui/core/List'
-//import ListItem from '@material-ui/core/ListItem'
-//import ListItemText from '@material-ui/core/ListItemText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Dialog from '@material-ui/core/Dialog'
 import Button from '@material-ui/core/Button'
-//import blue from '@material-ui/core/colors/blue';
 import axios from 'axios'
 
 const styles = {
@@ -43,7 +39,7 @@ class DialogDeleteConfirm extends Component {
           //element.parentNode.removeChild(guid);
         }
 
-        let endpoint = 'http://localhost:8080/delete/' + guid
+        let endpoint = 'http://localhost:8080/transaction/delete/' + guid
         let payload = ''
 
         axios.delete(endpoint, payload, {

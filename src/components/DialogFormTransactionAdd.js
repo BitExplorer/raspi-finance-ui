@@ -72,7 +72,7 @@ export default class DialogFormTransactionAdd extends Component {
     });
 
     let payload = JSON.stringify(obj);
-    let endpoint = 'http://localhost:8080/insert/';
+    let endpoint = 'http://localhost:8080/transaction/insert/';
     console.log(payload);
     alert(payload);
 

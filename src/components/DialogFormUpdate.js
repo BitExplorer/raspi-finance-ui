@@ -210,9 +210,7 @@ class DialogFormUpdate extends Component {
                 id="transactionDate"
                 type="text"
                 key="transactionDate"
-                defaultValue={this.handleDate(
-                  transaction.transactionDate,
-                ).toLocaleDateString('en-US')}
+                defaultValue={'test' /*this.handleDate( transaction.transactionDate, ).toLocaleDateString('en-US') */}
                 margin="dense"
                 fullWidth
               />

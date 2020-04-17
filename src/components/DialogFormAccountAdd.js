@@ -41,9 +41,9 @@ export default class DialogFormAccountAdd extends Component {
     obj['activeStatus'] = activeStatus.value;
 
     let payload = JSON.stringify(obj);
-    let endpoint = 'http://localhost:8080/account/select/all';
+    let endpoint = 'http://localhost:8080/account/insert';
     console.log(payload);
-    alert(payload);
+    alert(endpoint + " - " + payload);
 
     axios
       .post(endpoint, payload, {
