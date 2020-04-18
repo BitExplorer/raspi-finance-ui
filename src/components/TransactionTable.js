@@ -126,6 +126,16 @@ export class TransactionTable extends Component {
     this.setState({selectedDeleteValue: value, clickOpenDelete: false});
   };
 
+  handleClearedStatus = cleared => {
+    if( cleared === 1) {
+      return 'cleared';
+    } else if( cleared === 0) {
+      return 'outstanding';
+    } else {
+      return 'future';
+    }
+  };
+
   fromEpochDate(utcSeconds) {
     var transactionDate = new Date(0);
     transactionDate.setUTCSeconds(utcSeconds);
@@ -177,8 +187,8 @@ export class TransactionTable extends Component {
         })
         .then(response => {
           this.setState({
-            totals_cleared: response.data.totalsCleared,
-            totals: response.data.totals,
+            totals_cleared: response.data.totalsCleared.toFixed(2),
+            totals: response.data.totals.toFixed(2),
           });
         })
         .catch(error => {
@@ -192,7 +202,7 @@ export class TransactionTable extends Component {
     this.props.setAccount(true, []);
     this.props.setTransaction('none', []);
 
-    let endpoint = 'http://localhost:8080/account/select/all';
+    let endpoint = 'http://localhost:8080/account/select/active';
     let payload = '';
     console.log("endpoint = " + endpoint);
 
@@ -359,9 +369,9 @@ export class TransactionTable extends Component {
                     <TableCell>{row.description}</TableCell>
                     <TableCell>{row.category}</TableCell>
                     <TableCell className={this.props.classes.currency}>
-                      {row.amount}
+                      {row.amount.toFixed(2)}
                     </TableCell>
-                    <TableCell numeric>{row.cleared}</TableCell>
+                    <TableCell>{this.handleClearedStatus(row.cleared)}</TableCell>
                     <TableCell>{row.notes}</TableCell>
                   </TableRow>
                 );

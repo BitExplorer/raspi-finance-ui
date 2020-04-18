@@ -31,6 +31,18 @@ class DialogFormUpdate extends Component {
     this.setState({open: false});
   };
 
+  convertClearedToValue = cleared => {
+    if( cleared === 'cleared') {
+      return 1;
+    } else if( cleared === 'outstanding' ) {
+      return 0;
+    } else if( cleared === 'future' ) {
+      return -1;
+    } else {
+      return -2;
+    }
+  };
+
   validateText = () => {};
 
   fromEpochDate(utcSeconds) {
@@ -56,6 +68,9 @@ class DialogFormUpdate extends Component {
     let notes = document.getElementById('notes');
     let amount = document.getElementById('amount');
     let cleared = document.getElementById('cleared');
+    
+//TODO: cleared value
+
     let accountNameOwner = document.getElementById('accountNameOwner');
 
     obj['guid'] = this.props.transaction.guid;
@@ -94,7 +109,8 @@ class DialogFormUpdate extends Component {
       cleared.textContent !== 'transaction cleared...' &&
       cleared.textContent !== this.props.transaction.cleared
     ) {
-      obj['cleared'] = cleared.textContent;
+      obj['cleared'] = this.convertClearedToValue(cleared.textContent);
+      alert('cleared value=' + obj['cleared']);
     }
     let payload = JSON.stringify(obj);
     let endpoint =
@@ -133,6 +149,16 @@ class DialogFormUpdate extends Component {
     }
   };
 
+  handleClearedStatus = cleared => {
+    if( cleared === 1) {
+      return 'cleared';
+    } else if( cleared === 0) {
+      return 'outstanding';
+    } else {
+      return 'future';
+    }
+  };
+
   handleEpochDate = epoch => {
     if (isNaN(epoch) === true) {
       return 'invalid epoch'
@@ -152,8 +178,9 @@ class DialogFormUpdate extends Component {
     //let accountNameOwnerList = []
     let clearedJoinedList = [];
     let accountNameOwnerJoinedList = [];
-    clearedList.push(1);
-    clearedList.push(0);
+    clearedList.push('cleared');
+    clearedList.push('outstanding');
+    clearedList.push('future');
 
     //MenuItem vs option
     this.props.accountNameOwnerList.forEach(element1 => {
@@ -215,7 +242,7 @@ class DialogFormUpdate extends Component {
                 id="transactionDate"
                 type="text"
                 key="transactionDate"
-                defaultValue={this.handleEpochDate(transaction.transactionDate )/*this.handleDate( transaction.transactionDate, ).toLocaleDateString('en-US') */}
+                defaultValue={this.handleEpochDate(transaction.transactionDate)}
                 margin="dense"
                 fullWidth
               />
@@ -249,7 +276,7 @@ class DialogFormUpdate extends Component {
                 type="text"
                 id="amount"
                 key="amount"
-                defaultValue={transaction.amount}
+                defaultValue={transaction.amount.toFixed(2)}
                 autoComplete="on"
                 margin="dense"
               />

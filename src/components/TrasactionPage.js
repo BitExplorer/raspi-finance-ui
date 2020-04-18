@@ -115,6 +115,7 @@ const styles = theme => ({
   },
 });
 
+//TODO: remove this class
 class CustomPaginationActionsTable extends React.Component {
   state = {
     rows: [

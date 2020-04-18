@@ -19,7 +19,7 @@ class SimpleSelect extends Component {
 
   componentDidMount () {
 
-    let endpoint = 'http://localhost:8080/account/select/all'
+    let endpoint = 'http://localhost:8080/account/select/active'
     let payload = ''
 
     console.log("select");
