@@ -19,7 +19,7 @@ class LoadingData extends Component {
     return (
       <div>
       <ReactLoading type={type} color="green" height="10%" width="10%" />
-      {}
+      {"type=" + type}
       </div>
     );
   }

@@ -22,7 +22,8 @@ import Pagination from 'react-paginating';
 export class TransactionTable extends Component {
   constructor(props) {
     super(props);
-    this.blah = 'one';
+    this.loadingIconNow = 'bars';
+    this.notLoadingIcon = 'none';
     this.state = {
       rows: [],
       totals: 0.0,
@@ -76,18 +77,13 @@ export class TransactionTable extends Component {
         },
       })
       .then(response => {
-        //alert(JSON.stringify(response.data))
         alert(JSON.stringify(response.data.content));
         alert(JSON.stringify(response.data.pageable));
-        //this.props.setTransaction('none', response.data)
-        //this.setState({ rows: response.data, })
       })
       .catch(error => {
         console.log(error);
         alert(error);
       });
-
-    //alert(this.state.currentPage)
   };
 
   handleEpochDate = epoch => {
@@ -109,7 +105,6 @@ export class TransactionTable extends Component {
   };
 
   handler = e => {
-    //e.preventDefault()
     if (
       this.props.accountNameOwner !== '' &&
       this.props.accountNameOwner !== null &&
@@ -143,13 +138,9 @@ export class TransactionTable extends Component {
     return transactionDate.toLocaleDateString('en-US');
   }
 
-  // componentWillUnmount() {}
-
-  // componentWillReceiveProps = (nextProps, nextState) => {};
-
   componentDidUpdate(prevProps, prevState) {
     if (this.props.notificationIsShown === false) {
-      this.props.setTransactionLoadStatus('spin');
+      this.props.setTransactionLoadStatus(this.loadingIconNow);
       this.props.setAccount(true, this.props.accountNameOwner);
 
       let endpoint =
@@ -166,7 +157,7 @@ export class TransactionTable extends Component {
           },
         })
         .then(response => {
-          this.props.setTransaction('none', response.data);
+          this.props.setTransaction(this.notLoadingIcon, response.data);
           this.setState({rows: response.data});
         })
         .catch(error => {
@@ -223,15 +214,9 @@ export class TransactionTable extends Component {
   }
 
   render() {
-    //const classes = this.props
 
     return (
       <div>
-        {/* JSON.stringify(this.state) */}
-        {/* JSON.stringify(this.props.transactionList) */}
-        {/* Array.from(this.props.transactionList).map(row => {})*/}
-        {/* <LoadingData className=""  type={this.state.toggleView} */}
-
         <div className={this.props.classes.column}>
           <DialogFormTransactionAdd
             handler={this.handler}
@@ -403,16 +388,6 @@ const CustomTableCell = withStyles(theme => ({
 }))(TableCell);
 
 const styles = theme => ({
-  //root: {
-  //  width: '100%',
-  //  marginTop: theme.spacing.unit * 3,
-  //  overflowX: 'auto',
-  //},
-  //table: {
-  //  minWidth: 700,
-  //  fontSize: 'x-small',
-  //  //display: 'none',
-  //},
   row: {
     //not working
     '&:nth-of-type(odd)': {
@@ -442,21 +417,14 @@ const styles = theme => ({
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
     fontSize: 20,
-    //color: 'white',
-    //display: 'inline',
-    //display: 'none',
-    //display: '',
   },
   currency: {
     '&:after': {
       content: '.00',
     },
-    //not working
-    //'&:hover:not($disabled):not($error):not($focused):before': {
     '&:before': {
       content: '$',
       textAlign: 'right',
-      //display: 'none',
     },
   },
   column: {
