@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactLoading from 'react-loading'
+//import { LoadingSpinnerComponent} from './loadingSpinner';
 
 class LoadingData extends Component {
 
@@ -18,9 +19,7 @@ class LoadingData extends Component {
     return (
       <div>
       <ReactLoading type={type} color="green" height="10%" width="10%" />
-      {/*<ReactLoading type="cylon" color="green" height="20%" width="20%" />
-       <ReactLoading display='inline' type='spin' color='green' height={'20%'} width={'20%'} />
-      <ReactLoading display='inline' type='spokes' color='purple' height={'20%'} width={'20%'} />  */}
+      {}
       </div>
     );
   }

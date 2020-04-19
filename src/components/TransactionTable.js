@@ -22,6 +22,7 @@ import Pagination from 'react-paginating';
 export class TransactionTable extends Component {
   constructor(props) {
     super(props);
+    this.blah = 'one';
     this.state = {
       rows: [],
       totals: 0.0,
@@ -142,9 +143,9 @@ export class TransactionTable extends Component {
     return transactionDate.toLocaleDateString('en-US');
   }
 
-  componentWillUnmount() {}
+  // componentWillUnmount() {}
 
-  componentWillReceiveProps = (nextProps, nextState) => {};
+  // componentWillReceiveProps = (nextProps, nextState) => {};
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.notificationIsShown === false) {
