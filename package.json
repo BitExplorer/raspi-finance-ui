@@ -18,6 +18,7 @@
     "react-dom": "^16.6.0",
     "react-fontawesome": "^1.6.1",
     "react-js-pagination": "^3.0.2",
+    "react-loader-spinner": "^3.1.14",
     "react-loading": "^2.0.3",
     "react-material-ui-form-validator": "^2.0.2",
     "react-number-format": "^4.0.4",
