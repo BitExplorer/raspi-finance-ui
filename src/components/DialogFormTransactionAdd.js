@@ -37,13 +37,15 @@ export default class DialogFormTransactionAdd extends Component {
     return transactionDate.toLocaleDateString('en-US');
   };
 
-  toEochDate = transactionDate => {
+  toEochDateAsMillis = transactionDate => {
+
     let date_val = new Date(transactionDate);
     let utc_val = new Date(
       date_val.getTime() + date_val.getTimezoneOffset() * 60000,
     );
 
-    return Math.round(utc_val.getTime() / 1000);
+    return utc_val.valueOf();
+    //return Math.round(utc_val.getTime() / 1000);
   };
 
   handleCloseAdd = value => {
@@ -57,7 +59,7 @@ export default class DialogFormTransactionAdd extends Component {
     let accountNameOwner = document.getElementById('accountNameOwner');
 
     obj['guid'] = uuid();
-    obj['transactionDate'] = this.toEochDate(transactionDate.value);
+    obj['transactionDate'] = this.toEochDateAsMillis(transactionDate.value);
     obj['description'] = description.value;
     obj['category'] = category.value;
     obj['notes'] = notes.value;

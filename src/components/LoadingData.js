@@ -26,5 +26,3 @@ class LoadingData extends Component {
 }
 
 export default LoadingData;
-//export default withStyles(styles)(LoadingData1);
-

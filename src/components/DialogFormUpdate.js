@@ -57,7 +57,8 @@ class DialogFormUpdate extends Component {
       date_val.getTime() + date_val.getTimezoneOffset() * 60000,
     );
 
-    return Math.round(utc_val.getTime() / 1000);
+    //return Math.round(utc_val.getTime() / 1000);
+    return utc_val.valueOf();
   }
 
   handleCloseUpdate = value => {
