@@ -51,7 +51,7 @@ class DialogFormUpdate extends Component {
     return transactionDate.toLocaleDateString('en-US');
   }
 
-  toEochDate(transactionDate) {
+  toEochDateMillis(transactionDate) {
     let date_val = new Date(transactionDate);
     let utc_val = new Date(
       date_val.getTime() + date_val.getTimezoneOffset() * 60000,
@@ -77,10 +77,10 @@ class DialogFormUpdate extends Component {
     obj['guid'] = this.props.transaction.guid;
 
     if (
-      this.toEochDate(transactionDate.value) !==
+      this.toEochDateMillis(transactionDate.value) !==
       this.props.transaction.transactionDate
     ) {
-      obj['transactionDate'] = this.toEochDate(transactionDate.value);
+      obj['transactionDate'] = this.toEochDateMillis(transactionDate.value);
     }
     if (description.value !== this.props.transaction.description) {
       obj['description'] = description.value;
@@ -128,9 +128,12 @@ class DialogFormUpdate extends Component {
       })
       .then(response => {
         console.log(response);
-
-        this.props.setUpdatedTransaction(this.props.transaction.guid);
-        this.props.handler();
+        if (response.status === 200 ) {
+          this.props.setUpdatedTransaction(this.props.transaction.guid);
+          this.props.handler();
+        } else {
+          console.log("status=" + response.status);
+        }
       })
       .catch(error => {
         console.log(error);
