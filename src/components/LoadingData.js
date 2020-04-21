@@ -18,8 +18,9 @@ class LoadingData extends Component {
     const { type } = this.props;
     return (
       <div>
-      <ReactLoading type={type} color="green" height="10%" width="10%" />
-      {"type=" + type}
+      <div><ReactLoading type={type} color="green" height="50%" width="50%" /></div>
+    <div>status={type}</div>
+      
       </div>
     );
   }

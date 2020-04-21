@@ -69,7 +69,7 @@ class DialogDeleteConfirm extends Component {
 
     return (
       <Dialog open={true} onClose={this.handleClose} {...other}>
-        <DialogTitle id="title">Ok to delete</DialogTitle>
+        <DialogTitle id="title">Ok to delete this transaction?</DialogTitle>
         <div>
           <Button onClick={() => this.handleListItemClick(true, this.props.guid)}>Delete</Button>
           <Button onClick={() => this.handleListItemClick(false, this.props.guid)}>Cancel</Button>

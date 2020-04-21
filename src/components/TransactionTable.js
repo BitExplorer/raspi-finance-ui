@@ -15,7 +15,7 @@ import delete_logo from '../images/delete-24px.svg';
 import { setAccount, setTransaction, setTransactionLoadStatus, } from '../store/account/actionCreator';
 import DialogFormTransactionAdd from './DialogFormTransactionAdd';
 import DialogFormAccountAdd from './DialogFormAccountAdd';
-import Pagination from 'react-paginating';
+//import Pagination from 'react-paginating';
 //import { FilterDrawer, filterSelectors, filterActions } from 'material-ui-filter'
 //https://stackoverflow.com/questions/35537229/how-to-update-parents-state-in-react
 
@@ -179,8 +179,8 @@ export class TransactionTable extends Component {
         })
         .then(response => {
           this.setState({
-            totals_cleared: response.data.totalsCleared.toFixed(2),
-            totals: response.data.totals.toFixed(2),
+            totals_cleared: response.data.totalsCleared,
+            totals: response.data.totals,
           });
         })
         .catch(error => {
@@ -227,88 +227,14 @@ export class TransactionTable extends Component {
           <DialogFormAccountAdd handler={this.handler} />
         </div>
         <div className={this.props.classes.column}>
-          Cleared: {this.state.totals_cleared}
+        <b>Cleared:</b> {this.state.totals_cleared.toFixed(2)}
         </div>
         <div className={this.props.classes.column}>
-          Totals: {this.state.totals}
+          <b>Totals:</b> {this.state.totals.toFixed(2)}
         </div>
         <div className={this.props.classes.column}>
-          <Pagination
-            total={this.state.total}
-            limit={this.state.limit}
-            pageCount={this.state.pageCount}
-            currentPage={this.state.currentPage}>
-            {({
-              pages,
-              currentPage,
-              hasNextPage,
-              hasPreviousPage,
-              previousPage,
-              nextPage,
-              totalPages,
-              getPageItemProps,
-            }) => (
-              <div>
-                <button
-                  {...getPageItemProps({
-                    pageValue: 1,
-                    onPageChange: this.handlePageChange,
-                  })}>
-                  first
-                </button>
-
-                {hasPreviousPage && (
-                  <button
-                    {...getPageItemProps({
-                      pageValue: previousPage,
-                      onPageChange: this.handlePageChange,
-                    })}>
-                    {'<'}
-                  </button>
-                )}
-
-                {pages.map(page => {
-                  let activePage = null;
-                  if (currentPage === page) {
-                    activePage = {backgroundColor: '#fdce09'};
-                  }
-                  return (
-                    <button
-                      key={page}
-                      style={activePage}
-                      {...getPageItemProps({
-                        pageValue: page,
-                        onPageChange: this.handlePageChange,
-                      })}>
-                      {page}
-                    </button>
-                  );
-                })}
-
-                {hasNextPage && (
-                  <button
-                    {...getPageItemProps({
-                      pageValue: nextPage,
-                      onPageChange: this.handlePageChange,
-                    })}>
-                    {'>'}
-                  </button>
-                )}
-
-                <button
-                  {...getPageItemProps({
-                    pageValue: totalPages,
-                    onPageChange: this.handlePageChange,
-                  })}>
-                  last
-                </button>
-              </div>
-            )}
-          </Pagination>
-        </div>
         <LoadingData className="" type={this.props.loadingStatus} />
-
-        {/* <div className={this.props.notificationIsShown === false ? this.props.classes.showTable: this.props.classes.hideTable}> */}
+        </div>
         <div className={this.props.classes.showTable}>
           <Table id="transactionTable" key="transactionTable">
             <TableHead>
