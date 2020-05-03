@@ -13,13 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@master
-
-    - name: Set up Node.js version
-       uses: actions/setup-node@v1
-       with:
-         node-version: '12.x'
-    - run: npm ci
+      - uses: actions/checkout@master
+      - name: Set up Node.js version
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - run: npm ci
 
     # - name: npm install, build, and test
     #   run: |
