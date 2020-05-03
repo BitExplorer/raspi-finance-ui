@@ -27,5 +27,5 @@ jobs:
         with:
           app-name: 'react-example'
           slot-name: 'production'
-          # publish-profile: ${{ secrets.AzureAppService_PublishProfile_7675f8ff64f54686a9714799030f521f }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_7675f8ff64f54686a9714799030f521f }}
           package: .
