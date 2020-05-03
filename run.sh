@@ -1,5 +1,6 @@
 #!/bin/sh
 
+echo
 echo npm install watchman
 echo npm build
 echo npm install -g npm
